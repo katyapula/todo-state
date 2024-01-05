@@ -10,15 +10,14 @@ function App() {
   const { todos, setTodo } = useTodosQuery();
   const [filterConfig, setFilterConfig] = useState<TFilterConfig>([
     { field: "completed", value: [false, true], type: "intersect" },
+    { field: "title", value: "", type: "text" },
   ]);
   const filteredTodos = useMemo(() => {
-    if (filterConfig[0].value.length === 1) {
-      return filter(todos, filterConfig);
-    }
-    return todos;
+    return filter(todos, filterConfig);
   }, [todos, filterConfig]);
 
-  // Add text input for filtering by label
+  console.log(filterConfig);
+  // delectus aut autem
 
   return (
     <div className={styles.container}>
