@@ -15,10 +15,10 @@ export default function Filters({
   return (
     <>
       <h1>Filters</h1>
-      {/*<div className={styles["filter-section"]}>*/}
-      {/*  <h3>Search</h3>*/}
-      {/*  <Text filterConfig={filterConfig} setFilterConfig={setFilterConfig} />*/}
-      {/*</div>*/}
+      <div className={styles["filter-section"]}>
+        <h3>Search</h3>
+        <Text filterConfig={filterConfig} setFilterConfig={setFilterConfig} />
+      </div>
       <div className={styles["filter-section"]}>
         <h3>Completed</h3>
         <Completed

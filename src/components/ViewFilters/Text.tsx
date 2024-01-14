@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { TFilter, TFilterConfig } from "../../types";
+import React from "react";
+import {TFilterConfig} from "../../types";
 
 type TextProps = {
   filterConfig: TFilterConfig;
@@ -7,21 +7,27 @@ type TextProps = {
 };
 
 export function Text({ filterConfig, setFilterConfig }: TextProps) {
-  const onHandleChange = (value: string, name: string) => {
-    const newFilterConfig = filterConfig.map((filter) => {
-      if (filter.field === name) {
-        value.includes(filter.value[0]);
-      }
-      return filter;
-    });
-    setFilterConfig(newFilterConfig);
+
+  const textFilter = filterConfig.filter(
+    (filter) => filter.field === "title"
+  )[0];
+
+  const resultFilters = (textValue: string) => filterConfig.map((filter) => {
+    if (filter.field === "title") {
+      textFilter.value = textValue
+    }
+    return filter;
+  });
+
+  const handleChange = (param: string) => {
+    setFilterConfig(resultFilters(param));
   };
 
   return (
     <div>
       <input
         type="text"
-        onChange={(e) => onHandleChange(e.target.value, "title")}
+        onChange={(e) => handleChange(e.target.value)}
       />
     </div>
   );

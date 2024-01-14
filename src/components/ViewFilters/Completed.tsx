@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { TFilterConfig } from "../../types";
+import {TFilterConfig} from "../../types";
 
 type CompletedProps = {
   filterConfig: TFilterConfig;

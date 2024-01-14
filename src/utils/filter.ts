@@ -1,5 +1,7 @@
 import { TFilterConfig, TTodo } from "../types";
 
+
+// Found solution when we can specify value type explicitly here
 function applyFilters(todo: TTodo, filterConfig: TFilterConfig) {
   for (let i = 0; i < filterConfig.length; i++) {
     const currentFilter = filterConfig[i];
@@ -13,7 +15,7 @@ function applyFilters(todo: TTodo, filterConfig: TFilterConfig) {
     }
     if (
       currentFilter.type === "text" &&
-      !currentTodoValue.includes(currentFilter.value)
+      !(typeof currentTodoValue === "string" && currentTodoValue.includes(currentFilter.value))
     ) {
       return false;
     }
