@@ -24,7 +24,7 @@ export function Completed({ filterConfig, setFilterConfig }: CompletedProps) {
     (param: boolean) => {
       return filterValue.includes(param);
     },
-    [completedFilter]
+    [filterValue]
   );
 
   // Update filter functions
