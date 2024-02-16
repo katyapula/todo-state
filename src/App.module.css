@@ -15,7 +15,6 @@
 .rainbow-button {
   margin-top: 20px;
   cursor: pointer;
-  float: right;
   text-decoration:none;
   color:#FFF;
   width:136px;
@@ -47,4 +46,40 @@
 .light {
   color: #3d3a3a;
   background: #dadada;
+}
+
+.dark .navbar {
+  background: #dadada;
+}
+
+.light .navbar {
+  background: #3d3a3a;
+}
+
+.dark .navbarItem {
+  color: #3d3a3a;
+}
+
+.light .navbarItem {
+  color: #dadada;
+}
+
+.navbar {
+  position: fixed;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbarItem {
+  display: block;
+  color: #dadada;
+  font-size: 2em;
+  text-decoration: none;
+  padding: 0.5em 2em;
+}
+
+.navbarItem:hover {
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
 }
