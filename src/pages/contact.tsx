@@ -17,7 +17,6 @@ export default function Contact({}: ContactProps) {
   const onSubmit = (e: any) => {
     e.preventDefault();
     setTouched(true);
-    console.log(type);
   };
   return (
     <div>

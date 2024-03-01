@@ -8,9 +8,6 @@ import AppRoutes from "./core/routes";
 
 function App() {
   const theme = useSelector(selectTheme);
-  const state = useSelector((state: any) => state.app);
-
-  console.log(state);
 
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>

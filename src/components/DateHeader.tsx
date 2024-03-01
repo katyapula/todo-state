@@ -7,7 +7,6 @@ type DateHeaderProps = {};
 export default function DateHeader({}: DateHeaderProps) {
   const today = new Date();
   const setDate = useSelector(selectDate);
-  console.log(setDate);
   const formatDate = (date: Date, format: string) => {
     const map: Record<string, any> = {
       mm: date.getMonth() + 1,
