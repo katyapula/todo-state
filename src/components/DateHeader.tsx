@@ -22,7 +22,6 @@ export default function DateHeader({}: DateHeaderProps) {
   return (
     <>
       <h1>It's {formatDate(today, setDate)} today</h1>
-      <h1>It's today</h1>
     </>
   );
 }
