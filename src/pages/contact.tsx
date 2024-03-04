@@ -6,18 +6,21 @@ type ContactProps = {};
 export default function Contact({}: ContactProps) {
   const [touched, setTouched] = useState(false);
 
-  const [type, setType] = useState("");
-  const [name, setName] = useState("");
-  const [urgency, setUrgency] = useState("blocker");
-  const [message, setMessage] = useState("");
-  const handleType = (event: any) => setType(event.target.value);
-  const handleName = (event: any) => setName(event.target.value);
-  const handleUrgency = (event: any) => setUrgency(event.target.value);
-  const handleMessage = (event: any) => setMessage(event.target.value);
-  const onSubmit = (e: any) => {
+  const initialValues = {
+    type: "",
+    name: "",
+    urgency: "blocker",
+    message: "",
+  };
+
+  const [values, setValues] = useState(initialValues);
+  const handleChange = (field: string, value: string) =>
+    setValues({ ...values, [field]: value });
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTouched(true);
   };
+
   return (
     <div>
       <h1>Contact us</h1>
@@ -29,7 +32,7 @@ export default function Contact({}: ContactProps) {
               type="radio"
               name="type"
               value="suggestion"
-              onChange={handleType}
+              onChange={(e) => handleChange("type", e.target.value)}
             />
             <span>Suggestion</span>
           </label>
@@ -38,27 +41,40 @@ export default function Contact({}: ContactProps) {
               type="radio"
               name="type"
               value="bugReport"
-              onChange={handleType}
+              onChange={(e) => handleChange("type", e.target.value)}
             />
             <span>Bug report</span>
           </label>
-          {!type && touched && <div className={styles.error}>Error</div>}
+          {!values.type && touched && <div className={styles.error}>Error</div>}
         </fieldset>
 
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" onChange={handleName} />
-          {!name && touched && <div className={styles.error}>Error</div>}
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={values.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+          />
+          {!values.name && touched && <div className={styles.error}>Error</div>}
         </div>
 
         <div>
           <label htmlFor="urgency">Urgency</label>
-          <select name="urgency" id="urgency" onChange={handleUrgency}>
+          <select
+            name="urgency"
+            id="urgency"
+            value={values.urgency}
+            onChange={(e) => handleChange("urgency", e.target.value)}
+          >
             <option value="blocker">Blocker</option>
             <option value="major">Major</option>
             <option value="minor">Minor</option>
           </select>
-          {!urgency && touched && <div className={styles.error}>Error</div>}
+          {!values.urgency && touched && (
+            <div className={styles.error}>Error</div>
+          )}
         </div>
 
         <div>
@@ -66,9 +82,12 @@ export default function Contact({}: ContactProps) {
           <textarea
             name="message"
             id="message"
-            onChange={handleMessage}
+            value={values.message}
+            onChange={(e) => handleChange("message", e.target.value)}
           ></textarea>
-          {!message && touched && <div className={styles.error}>Error</div>}
+          {!values.message && touched && (
+            <div className={styles.error}>Error</div>
+          )}
         </div>
 
         <button type="submit" className={styles["rainbow-button"]}>
